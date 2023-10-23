@@ -134,7 +134,7 @@ func hcalc(data []float64, text string) float64 {
 func main() {
 	data, err := readCSV("USD.csv")
 	if err != nil {
-		log.Fatalf("Ошибка при чтении файла:", err)
+		log.Fatalf("Ошибка при чтении файла: %v", err)
 	}
 
 	x := make([]float64, len(data))
@@ -151,7 +151,7 @@ func main() {
 
 	data, err = readCSV("JPY.csv")
 	if err != nil {
-		log.Fatalf("\n Ошибка при чтении файла:", err)
+		log.Fatalf("Ошибка при чтении файла: %v", err)
 	}
 	h = hcalc(data, "JPY")
 	fmt.Printf("Показатель Херста для JPY равен: %.2f", h)
