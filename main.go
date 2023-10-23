@@ -113,18 +113,9 @@ func hcalc(data []float64, text string) float64 {
 		w[p] = 1
 	}
 
-	a, b := stat.LinearRegression(e, n, w, false)
-
-	fx := make([]float64, pmax)
-	for i := range e {
-		fx[i] = a + b*e[i]
-	}
+	_, b := stat.LinearRegression(e, n, w, false)
 
 	if err := plotGraph(e, n, fmt.Sprintf("log(std)-log(p)_%v", text)); err != nil {
-		log.Fatalf("error plotting: %v", err)
-	}
-
-	if err := plotGraph(e, fx, fmt.Sprintf("fx-log(p)_%v", text)); err != nil {
 		log.Fatalf("error plotting: %v", err)
 	}
 
